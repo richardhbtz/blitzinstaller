@@ -25,15 +25,9 @@ if ! command -v nvim &> /dev/null; then
 fi
 
 if [ -d "$HOME/.config/nvim" ]; then
-    read -p "Existing configuration found. Back it up? (y/n): " choice
-    case "$choice" in
-        y|Y ) backup_nvim_config;;
-        n|N ) print_in_color yellow "Skipping backup.";;
-        * ) print_in_color red "Invalid choice. Exiting."; exit 1;;
-    esac
+    backup_nvim_config
 fi
 
-mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/nvim/lua/custom"
 
 print_in_color blue "Installing blitz..."
